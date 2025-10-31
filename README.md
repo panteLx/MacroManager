@@ -1,8 +1,12 @@
-# Python Game Macro
+# MacroManager
 
-A customizable macro tool designed for automating repetitive actions in games, with a focus on user-friendly interface and configuration.
+A customizable macro tool designed for automating repetitive actions in games, with a focus on user-friendly interface and configuration. This tool features a modern graphical user interface for easy macro management and configuration.
 
 ## Features
+
+- Modern graphical user interface (GUI)
+- Multiple macro support with easy selection
+- Detailed macro descriptions and status monitoring
 
 - Customizable start/stop keys
 - Clean and informative console interface
@@ -10,93 +14,97 @@ A customizable macro tool designed for automating repetitive actions in games, w
 - Real-time status display
 - Ability to change key bindings on the fly
 
-## Quick Start
+## Installation
 
-1. Download this repository
+### Prerequisites
+
+- Windows OS (required for game window interaction)
+- Python 3.11 or higher ([Download from python.org](https://www.python.org/downloads/))
+  - During installation, check "Add Python to PATH"
+
+### Quick Start (Recommended)
+
+1. Download the repository from [GitHub](https://github.com/panteLx/MacroManager/)
 2. Double-click `start_macro.bat`
-3. That's it! The script will automatically set up everything needed
+3. That's it! The script will handle everything automatically
 
-## Manual Setup (Alternative)
+### Manual Installation
 
-If you prefer to set up manually, make sure you have:
+If you prefer to set up manually or the quick start doesn't work:
 
-### 1. System Setup
-
-1. Install Python:
-
-   - Download Python 3.11 or higher from [python.org](https://www.python.org/downloads/)
-   - During installation, make sure to check "Add Python to PATH"
-   - Verify installation by opening PowerShell and running:
-     ```powershell
-     python --version
-     ```
-
-2. Download the Project:
-   - Download this repository as a ZIP file and extract it, or
-   - If you have Git installed, clone the repository:
-     ```powershell
-     git clone https://github.com/panteLx/python-macro.git
-     cd python-macro
-     ```
-
-### 2. Project Setup
-
-1. Open PowerShell as Administrator:
-
-   - Right-click on PowerShell in the Start menu
-   - Select "Run as administrator"
-   - Navigate to your project folder:
-     ```powershell
-     cd path\to\python-macro
-     ```
-
-2. Create and Activate Virtual Environment:
+1. **Get the Code**
 
    ```powershell
-   # Remove existing venv if any
-   if (Test-Path .venv) { Remove-Item -Recurse -Force .venv }
+   # Either clone the repository
+   git clone https://github.com/panteLx/MacroManager.git
+   cd MacroManager
 
-   # Create new virtual environment
-   python -m venv .venv
-
-   # Activate it
-   .\.venv\Scripts\activate
-
-   # Your prompt should now show (.venv)
+   # Or download and extract the ZIP from GitHub
    ```
 
-3. Install Required Packages:
+2. **Set Up Environment**
 
    ```powershell
-   # Upgrade pip first
-   python -m pip install --upgrade pip
+   # Create and activate virtual environment
+   python -m venv .venv
+   .\.venv\Scripts\activate
 
-   # Install requirements
+   # Install dependencies
    pip install -r requirements.txt
    ```
 
-## Running and Using the Macro
+## Usage
 
-### 1. First-Time Setup
-
-1. Start the Script:
+1. **Launch the Application**
 
    ```powershell
-   # Make sure you're in the project directory and venv is activated
    python app.py
    ```
 
-2. Initial Configuration:
+2. **First-Time Setup**
 
-   - You'll be prompted to set up your key bindings
-   - Press the key you want to use to START the macro
-   - Press the key you want to use to STOP the macro
-   - These settings will be saved in `macro_config.json`
+   - On first run, you'll be prompted to set up your hotkeys
+   - Choose your preferred START and STOP keys
+   - These settings will be saved for future use
 
-3. Game Window Detection:
-   - The script will look for your game window
-   - The game must be running and visible
-   - The window title will be displayed when found
+3. **Using MacroManager**
+   - Make sure your game is running and visible
+   - Select a macro from the dropdown menu
+   - Read the description to understand what it does
+   - Use the buttons or hotkeys to control the macro
+   - Monitor the status in real-time
+   - Press 'K' or use the button to change key bindings
+
+## Adding New Macros
+
+You can easily add new macros by editing the `macros.py` file:
+
+1. Create a new class inheriting from `Macro`
+2. Implement the required methods
+3. Add your macro to the `AVAILABLE_MACROS` dictionary
+
+Example:
+
+```python
+class MyNewMacro(Macro):
+    def __init__(self):
+        super().__init__(
+            "My Custom Macro",
+            "Description of what this macro does"
+        )
+
+    def run(self, game_window: Any, running: Any) -> None:
+        while running.is_set():
+            try:
+                # Your macro logic here
+                pass
+            except Exception as e:
+                print(f"Error in macro sequence: {e}")
+                time.sleep(1)
+
+# Add to available macros
+AVAILABLE_MACROS["my_macro"] = MyNewMacro()
+```
 
 ### 2. Daily Usage
 
@@ -104,7 +112,7 @@ If you prefer to set up manually, make sure you have:
 
    ```powershell
    # Navigate to project folder
-   cd path\to\python-macro
+   cd path\to\MacroManager
 
    # Activate virtual environment
    .\.venv\Scripts\activate
@@ -116,7 +124,6 @@ If you prefer to set up manually, make sure you have:
 2. Using the Macro:
 
    - Make sure your game window is open and visible
-   - **IMPORTANT**: Click on the game window to focus it before starting the macro
    - Use your configured START key to begin the macro
    - Use your configured STOP key to halt the macro
    - Press 'K' to change key bindings (only while macro is stopped)
@@ -130,16 +137,9 @@ If you prefer to set up manually, make sure you have:
 
 ## Important Notes
 
-- The game window must be in focus on first start for the macro to work properly
 - Make sure to stop the macro before changing key bindings
 - Your key bindings are saved in `macro_config.json` and will be loaded automatically on subsequent runs
 - The script must be run with sufficient permissions to send input to the game
-
-## Files Description
-
-- `app.py` - Main script containing the macro logic and UI
-- `direct_keys.py` - DirectInput key codes and functions for game input
-- `macro_config.json` - Stores your key binding preferences
 
 ## Troubleshooting
 
