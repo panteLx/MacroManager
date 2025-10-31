@@ -15,7 +15,7 @@ class BF6SiegeCairoMacro(Macro):
     def __init__(self):
         super().__init__(
             "Battlefield 6 Siege of Cairo AFK",
-            "Siege of Cairo AFK Macro for Battlefield 6 that automates capturing objectives. Portal Code: YVNDS"
+            "Siege of Cairo AFK Macro for Battlefield 6 that automates capturing objectives. Portal Code: YVNDS - Tutorial: https://youtu.be/LH_Gj87xodI?si=GJvNM4reqZoQxJ7f&t=161"
         )
 
     def run(self, game_window: Any, running: Any) -> None:
@@ -81,7 +81,7 @@ class BF6LibPeakMacro(Macro):
     def __init__(self):
         super().__init__(
             "Battlefield 6 Liberation Peak AFK",
-            "Liberation Peak AFK Macro for Battlefield 6 that automates capturing objectives. Portal Code: YWVXU"
+            "Liberation Peak AFK Macro for Battlefield 6 that automates capturing objectives. Portal Code: YWVXU - Tutorial: https://youtu.be/TTv9BSTzFTg?si=fdGpfcFno4Y9w3cI&t=61"
         )
 
     def run(self, game_window: Any, running: Any) -> None:
@@ -119,11 +119,34 @@ class BF6LibPeakMacro(Macro):
                 print(f"Error in BF6LibPeakMacro: {e}")
                 time.sleep(1)
 
+class BF6SpaceBarMacro(Macro):
+    def __init__(self):
+        super().__init__(
+            "Battlefield 6 Space Bar AFK",
+            "Space Bar AFK Macro for Battlefield 6. Portal Code: YRV4A"
+        )
+
+    def run(self, game_window: Any, running: Any) -> None:
+        while running.is_set():
+            try:
+                # Press space 120 times with 30 second intervals
+                for i in range(120):
+                    if not running.is_set(): return
+                    print(f"Pressing Space ({i+1}/120)")
+                    send_key_to_window(game_window, 'space')
+                    print("Released Space")
+                    time.sleep(30)
+            except Exception as e:
+                print(f"Error in BF6SpaceBarMacro: {e}")
+                time.sleep(1)
+
+
 # Add more macro classes here...
 
 # Dictionary of all available macros
 AVAILABLE_MACROS: Dict[str, Macro] = {
     "bf6_lib_peak": BF6LibPeakMacro(),
     "bf6_siege_cairo": BF6SiegeCairoMacro(),
+    "bf6_space_bar": BF6SpaceBarMacro(),
     # Add more macros here...
 }
