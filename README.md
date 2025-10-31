@@ -1,6 +1,5 @@
 <div align="center"><img src="https://i.imgur.com/NOmo7Dg.png" alt="MacroManager Logo"></div>
 <h1 align="center" id="title">MacroManager</h1>
-<div align="center">
 
 > **Note**
 >
