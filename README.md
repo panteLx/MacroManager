@@ -10,14 +10,15 @@ A customizable macro tool designed for automating repetitive actions in games, w
 - Real-time status display
 - Ability to change key bindings on the fly
 
-## Prerequisites
+## Quick Start
 
-Before running the script, make sure you have the following installed:
+1. Download this repository
+2. Double-click `start_macro.bat`
+3. That's it! The script will automatically set up everything needed
 
-- Python 3.11 or higher
-- Windows operating system (required for DirectInput functionality)
+## Manual Setup (Alternative)
 
-## Detailed Setup Guide
+If you prefer to set up manually, make sure you have:
 
 ### 1. System Setup
 
