@@ -17,46 +17,115 @@ Before running the script, make sure you have the following installed:
 - Python 3.11 or higher
 - Windows operating system (required for DirectInput functionality)
 
-## Setup Instructions
+## Detailed Setup Guide
 
-1. Clone or download this repository to your local machine
+### 1. System Setup
 
-2. Create a virtual environment (recommended):
+1. Install Python:
+
+   - Download Python 3.11 or higher from [python.org](https://www.python.org/downloads/)
+   - During installation, make sure to check "Add Python to PATH"
+   - Verify installation by opening PowerShell and running:
+     ```powershell
+     python --version
+     ```
+
+2. Download the Project:
+   - Download this repository as a ZIP file and extract it, or
+   - If you have Git installed, clone the repository:
+     ```powershell
+     git clone https://github.com/panteLx/python-macro.git
+     cd python-macro
+     ```
+
+### 2. Project Setup
+
+1. Open PowerShell as Administrator:
+
+   - Right-click on PowerShell in the Start menu
+   - Select "Run as administrator"
+   - Navigate to your project folder:
+     ```powershell
+     cd path\to\python-macro
+     ```
+
+2. Create and Activate Virtual Environment:
 
    ```powershell
+   # Remove existing venv if any
+   if (Test-Path .venv) { Remove-Item -Recurse -Force .venv }
+
+   # Create new virtual environment
    python -m venv .venv
+
+   # Activate it
    .\.venv\Scripts\activate
+
+   # Your prompt should now show (.venv)
    ```
 
-3. Install the required packages:
+3. Install Required Packages:
+
    ```powershell
-   pip install keyboard win32gui
+   # Upgrade pip first
+   python -m pip install --upgrade pip
+
+   # Install requirements
+   pip install -r requirements.txt
    ```
 
-## Running the Macro
+## Running and Using the Macro
 
-1. Activate the virtual environment (if you created one):
+### 1. First-Time Setup
 
-   ```powershell
-   .\.venv\Scripts\activate
-   ```
-
-2. Run the script:
+1. Start the Script:
 
    ```powershell
+   # Make sure you're in the project directory and venv is activated
    python app.py
    ```
 
-3. First-time Setup:
+2. Initial Configuration:
 
-   - On first run, you'll be prompted to choose your preferred start and stop keys
-   - These settings will be saved for future use
+   - You'll be prompted to set up your key bindings
+   - Press the key you want to use to START the macro
+   - Press the key you want to use to STOP the macro
+   - These settings will be saved in `macro_config.json`
 
-4. Using the Macro:
-   - Make sure your game window is in focus (clicked) before starting the macro
-   - Use your configured keys to start and stop the macro
-   - Press 'K' to change key bindings at any time (while macro is not running)
-   - Use Ctrl+C to exit the program
+3. Game Window Detection:
+   - The script will look for your game window
+   - The game must be running and visible
+   - The window title will be displayed when found
+
+### 2. Daily Usage
+
+1. Start the Macro:
+
+   ```powershell
+   # Navigate to project folder
+   cd path\to\python-macro
+
+   # Activate virtual environment
+   .\.venv\Scripts\activate
+
+   # Run the script
+   python app.py
+   ```
+
+2. Using the Macro:
+
+   - Make sure your game window is open and visible
+   - **IMPORTANT**: Click on the game window to focus it before starting the macro
+   - Use your configured START key to begin the macro
+   - Use your configured STOP key to halt the macro
+   - Press 'K' to change key bindings (only while macro is stopped)
+   - Press Ctrl+C in the console to exit the program
+
+3. Understanding the Interface:
+   - The console shows the current status (Idle/Running/Stopped)
+   - Your current key bindings are always displayed
+   - Warning messages will appear when important actions are needed
+   - The game window title is shown to confirm correct detection
 
 ## Important Notes
 
