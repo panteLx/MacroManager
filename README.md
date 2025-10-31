@@ -1,8 +1,10 @@
-# MacroManager
+<div align="center"><img src="https://i.imgur.com/NOmo7Dg.png" alt="MacroManager Logo"></div>
+<h1 align="center" id="title">MacroManager</h1>
+<div align="center">
 
-A customizable macro tool designed for automating repetitive actions in games, with a focus on user-friendly interface and configuration. This tool features a modern graphical user interface for easy macro management and configuration.
-
-![MacroManager Interface](https://cdn.ssx.si/u/bnRDeH.png)
+> **Note**
+>
+> A customizable macro tool designed for automating repetitive actions in games, with a focus on user-friendly interface and configuration. This tool features a modern graphical user interface for easy macro management and configuration.
 
 ## Features
 
