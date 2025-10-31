@@ -38,7 +38,7 @@ def restore_window_focus(hwnd):
     """Restore focus to a specific window"""
     if hwnd and win32gui.IsWindow(hwnd):
         win32gui.SetForegroundWindow(hwnd)
-        time.sleep(0.05)  # Small delay to ensure focus is restored
+        time.sleep(0.1)  # Small delay to ensure focus is restored
 
 def send_key_to_window(hwnd, key, duration=None):
     if not hwnd or not win32gui.IsWindow(hwnd):
@@ -90,7 +90,7 @@ def macro_sequence(game_window, running):
                 print(f"Pressing Space ({i+1}/4)")
                 send_key_to_window(game_window, 'space')
                 print("Released Space")
-                time.sleep(3)
+                time.sleep(30)
             
             # Press S for 7 seconds
             if not running.is_set(): return
@@ -105,7 +105,7 @@ def macro_sequence(game_window, running):
                 print(f"Pressing Space ({i+1}/4)")
                 send_key_to_window(game_window, 'space')
                 print("Released Space")
-                time.sleep(3)
+                time.sleep(30)
         except Exception as e:
             print(f"Error in macro sequence: {e}")
             time.sleep(1)
