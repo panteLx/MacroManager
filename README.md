@@ -2,6 +2,8 @@
 
 A customizable macro tool designed for automating repetitive actions in games, with a focus on user-friendly interface and configuration. This tool features a modern graphical user interface for easy macro management and configuration.
 
+![MacroManager Interface](https://cdn.ssx.si/u/bnRDeH.png)
+
 ## Features
 
 - Modern graphical user interface (GUI)
